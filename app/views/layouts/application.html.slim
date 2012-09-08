@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title hiperativo.co
+		= stylesheet_link_tag 		"application"
+		= javascript_include_tag 	"application"
+
+	- unless params[:action] == "index"
+		.menu
+			= link_to image_tag("logo-hiperativo-small.png"), "/", :class => "logo-small"
+
+	= yield

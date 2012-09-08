@@ -1,0 +1,92 @@
+$amarelo: #ffde00
+$preto: #292633
+$branco: #eee
+
+$tipo_titulo: "Bree Serif"
+
+body
+	:background-color $amarelo
+	:color $preto
+
+h1, h2, h3, h4, h5
+	:font-family $tipo_titulo
+
+h1
+	:font-size 40px
+
+.preto
+	:background $preto 
+	:color $branco
+
+	h1, h2, h3, h4, h5
+		:color $amarelo
+
+	.faixa
+		:background-color $amarelo
+
+	a
+		:text-decoration underline
+		:color $branco
+		:font-weight bold
+
+		&:hover
+			:color $amarelo
+
+.amarelo
+	:color $preto
+
+	h1, h2, h3, h4, h5
+		:color $preto
+
+.about
+	:padding 0 20px
+	:padding-bottom 5px
+
+a
+	:font-family $tipo_titulo
+	:color $amarelo
+
+	&:hover
+		:color $amarelo
+
+.logo-container
+	:background-color $amarelo
+	:height 100px
+	:padding 0 20px
+
+.descricao
+	:padding 0 20px
+
+.faixa
+	:background-color $preto
+	:display block
+	:height 100px
+
+.logo
+	:margin auto
+	:display block
+
+.about
+	:background-color $amarelo
+
+.saiba-mais, .contato
+	:display block
+	:font-size 24px
+	:text-align right
+
+.saiba-mais
+	:padding 40px
+
+.contato
+	:padding 60px
+
+.menu
+	:position fixed
+	:bottom 0px
+	:width 100%
+	
+	a
+		:color $amarelo
+
+	img
+		:padding 20px
