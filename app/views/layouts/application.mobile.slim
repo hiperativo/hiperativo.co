@@ -1,0 +1,16 @@
+doctype html
+/ mobile version
+html
+	head
+		meta name="viewport" content="width=device-width, initial-scale=1"
+		link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'
+		= stylesheet_link_tag 		:mobile
+		= javascript_include_tag 	:mobile
+	body
+		.page data-role="page" data-theme="a"
+			.header data-role="header"
+				= link_to "voltar", "#", "data-rel" => "back" unless params[:action] == "index"
+				h1 Hiperativo
+			.header data-role="content"= yield
+			.header data-role="footer" 
+				p hiperativo.co © 2012
