@@ -28,6 +28,17 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test do
+	gem 'rspec-rails'
+	gem 'capybara'
+end
+
+group :development do
+  gem 'ruby_gntp'
+	gem 'rb-fsevent', :require => false
+	gem 'guard-rspec'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
