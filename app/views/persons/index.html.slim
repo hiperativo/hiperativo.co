@@ -1,0 +1,99 @@
+= image_tag "pilula-hiperativo.svg", class: "span2 logo"
+.wrapper
+h1 data-link="reset" hiperativo.co
+
+nav.from
+	- for item in %w"sobre pessoas contato" do
+		= " / "
+		= link_to item, "#", data:{"link"=>item}
+
+.container.centered
+	section.pessoas
+		h2 Quem somos
+		- @pessoas =  [{nome: "Pedro Maciel", apelido: "pedro", cargo: "Designer e desenvolvedor", bio: "TODO"}]
+		- @pessoas << {nome: "Beatriz Accioly", apelido: "bia", cargo: "Designer e ilustradora", bio: "TODO"}
+		div style="margin: auto; width: 440px"
+			.row
+				- for pessoa in @pessoas do 
+					.pessoa.span2
+						= image_tag "avatar-#{pessoa[:apelido] }.png"
+						h3= pessoa[:nome]
+						p= pessoa[:cargo]
+
+
+
+		-#	.front-face
+		-#		= image_tag "avatar-#{pessoa[:apelido] }.png"
+		-#		h3= pessoa[:nome]
+		-#		p= pessoa[:cargo]
+		-#	
+		-#	.back-face
+		-#		markdown:
+		-#			#{pessoa[:bio]}
+
+	section.contato
+
+		.row
+			.span12
+				h2 Qual é o seu problema?
+		.row
+			.span4
+				markdown:
+					Não consideramos pejorativa a palavra problema, pois um problema,
+					por definição, denota que existe uma solução. Se não há solução,
+					não é um problema.
+
+					Se o seu problema por exemplo, é aumentar vendas, a solução pode ser
+					fazer um site, um vídeo ou ainda material impresso. Vai depender é claro do problema.
+					Então conta um pouquinho pra gente sobre ele. Ou contate-nos por outras formas.
+					
+					##### Para entrar em contato
+					__skype:__ opa@hiperativo.co  
+					__email:__ opa@hiperativo.co  
+					__fone:__ +55 11 9 9979 3777  
+					__fone:__ +55 11 9 9925 4838  
+					__facebook:__ #{link_to "facebook.com/hiperativo.co", "http://facebook.com/hiperativo.co"}
+
+			.span6.formulario-de-contato.well
+				= form_for Contato.new, url: "/envio", html:{size: "auto"} do |f|
+					markdown:
+						Olá hiperativo. Me chamo #{f.text_field :name, size: "auto"}. Entre em contato comigo pelo
+						telefone #{f.text_field :telefone} ou pelo email #{f.text_field :email} o mais breve possível.
+						
+						O motivo de meu contato é que:
+
+						#{f.text_area :mensagem, rows: 5, class:"span6"}
+
+					= f.submit :enviar, class: "btn btn-primary btn-large pull-right span3"
+			.span3
+				markdown:
+
+	section.trabalhos
+		.container
+			.big-expose
+				ul.outros-trabalhos.thumbnails.span12
+					- 12.times do
+						li.span3
+							= image_tag "holder.js/200x124", class: "thumbnail"
+
+.conteudo
+	section.sobre
+		.row
+			.span6
+				h2 Sobre
+		.row
+			.span6
+				markdown:
+					Em 2011, após 4 anos de experiência dentro do mercado publicitário, Pedro Maciel e Beatriz Accioly decidem fundar um escritório de comunicação visual onde tudo fosse feito de maneira diferente:
+
+					-	Onde o foco fosse não apenas as grandes empresas, mas também as pequenas e médias.
+
+					-	Onde os orçamentos fossem calculados com base no tempo e esforços ali dispendidos e não na verba em potencial que o cliente parecia ter
+
+					-	Onde o design fosse respeitado como uma forma inteligente de se atingir o sucesso mútuo, ambos nossos e de nossos clientes, e não como uma mera palavra em inglês que adiciona status.
+					
+					-	Onde os sites e os vídeos fossem feitos com as últimas tecnologias e tendencias existentes, pois a empolgação morre completamente ao percebermos que trabalhamos da mesma forma que se trabalhava há 20 anos atrás.
+
+					-	Onde a forma de trabalho fosse, enfim, honesta. Não que deixássemos de visar o lucro, mas que visássemos o lucro de nossos clientes também como nossos.
+
+					E assim nasceu o #{link_to "hiperativo", "http://hiperativo.co", data:{link: "reset"}}.

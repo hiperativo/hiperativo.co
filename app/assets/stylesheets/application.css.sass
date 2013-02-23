@@ -1,94 +1,337 @@
-//= require twitter/bootstrap
+//= require bootstrap
+@import "bourbon/bourbon"
+
+@font-face
+	:font-family "Avant Garde"
+	:font-weight "medium"
+	:src url("/assets/avant-garde.otf")
+
+// @font-face
+// 	:font-family "FedraSerifA"
+// 	:font-weight "book"
+// 	:src url("/assets/fedra-serif-a-book.otf")
 
 $amarelo: #ffde00
-$preto: #292633
+$preto: #000
 $branco: #eee
 
-$tipo_titulo: "Bree Serif"
+$tipo_titulo: "Avant Garde"
+$tipo_subtitulo: "Bree Serif"
+$tipo_corpo: "Proxima Nova"
+
+$comeco_do_site: 100px
+
+
+.wrapper
+	:background-color $amarelo
+	:width 100%
+	:height 100%
+	:display block
+	:position fixed
+	:z-index -1
+	:overflow hidden
 
 body
-	:background-color $amarelo
+	:background-color #fff
 	:color $preto
+	:overflow scroll-x
+	:padding-bottom 40px
 
-h1, h2, h3, h4, h5
+body, p, ul
+	:font normal normal normal 14px/1.4 $tipo_corpo
+
+html.animations
+	.logo, .conteudo, section, h1, nav, .bg, .wrapper, .front-face, .back-face, .thumbnail
+		@include transition(all 400ms ease-in-out)
+		-webkit-backface-visibility: hidden
+	// body
+	// 	@include transition(background-color 200ms ease-in-out)
+
+h1, h2
 	:font-family $tipo_titulo
+	:font-weight "medium"
+	:font-size golden-ratio(100px, -1)
+h2
+	:margin-bottom golden-ratio(100px, -3)
 
 h1
-	:font-size 40px
+	:position fixed
 
-.preto
-	:background $preto 
-	:color $branco
+h3, h4, h5, nav a
+	:font-family $tipo_subtitulo
+	:line-height 1.4
 
-	h1, h2, h3, h4, h5
-		:color $amarelo
 
-	.faixa
-		:background-color $amarelo
+.formulario-de-contato
+	:background-color $branco
+	:border none
+	:border-radius 0
+	:background-color #ffffee
+	:color #440000
+	:-webkit-transform rotate(-2deg)
 
-	a
-		:text-decoration underline
-		:color $branco
-		:font-weight bold
+	&.well
+		:background-color $branco
+		:border none
+		:border-radius 0
+		:background-color #ffffee
+		:color #440000
+		:-webkit-transform rotate(-2deg)
 
-		&:hover
-			:color $amarelo
+	input[type=text]
+		:box-shadow none
+		:border none
+		:border-bottom 2px dotted transparentize(#440000, 0.87)
+		:border-radius 0px
+		:width auto
+		:padding 0px
+		:font-size 14px
+		:margin-bottom 3px
 
-.amarelo
-	:color $preto
+	input[type=text], textarea
+		:color #ff2222
+		:background none
 
-	h1, h2, h3, h4, h5
-		:color $preto
+	textarea
+		:background none
+		:border 2px dotted transparentize(#440000, 0.87)
 
-.about
-	:padding 0 20px
-	:padding-bottom 5px
+	h2
+		:opacity 0.5
+		:font-size 30px
+		:margin 0
+		:text-transform uppercase
+
+.centered
+	:padding-top 100px
+
+section.sobre
+	ul
+		:margin-left 0px
+		:list-style-type none
+		:list-style-position outside
+
+		li
+			:background transparent no-repeat url("/assets/rainho.png") 0px 12px
+			:padding-left 20px
+			:margin-left -20px
+			:padding-top 10px
+			:border-top 2px dotted transparentize($preto, 0.8)
+
+.logo
+	:margin-top -(golden-ratio(100px, 0)/2)
+	:width 100px
+	:height golden-ratio(100px, 0)
+	:margin-left - golden-ratio(100px, 0)
+	:z-index 1
+
+	&:hover
+		@include transform(rotate(720deg))
+
+.logo, h1, nav
+	:position fixed
+	:left golden-ratio(100%, -3)
+	:top 50%
+
+@-webkit-keyframes bg
+	0%
+		:left 100%
+		@include transform(rotate(0deg))
+
+	100%
+		:left -30%
+		@include transform(rotate(1080deg))
+
+.bg	
+	:position absolute
+	:opacity 0.1
+
+h1, .logo, .bg
+	-webkit-user-select: none
+
+h1
+	:left golden-ratio(100%, -3)
+	:margin-left 20px
+	:margin-top -15px
+	:z-index 2
+	:cursor default
+
+h3
+	:font-size 20px
 
 a
-	:font-family $tipo_titulo
-	:color $amarelo
+	:color $preto
+	:text-decoration none
+
+	&.active
+		:opacity 0.7
+
+		&:hover
+			:cursor default
+			:background-color transparent
+			:color $preto
 
 	&:hover
 		:color $amarelo
+		:background-color $preto
+		:text-decoration none
 
-.logo-container
-	:background-color $amarelo
-	:height 100px
-	:padding 0 20px
+nav
+	:color transparentize($preto, 0.8)
+	@include transform-origin(-10px)
+	@include transform(perspective(400px) rotateY(0deg))
+	:margin-left 438px
+	:z-index 5
 
-.descricao
-	:padding 0 20px
+nav.from
+	@include transform(perspective(400px) rotateY(90deg))
 
-.faixa
-	:background-color $preto
-	:display block
-	:height 100px
+.conteudo
+	:position absolute
+	:left golden-ratio(100%, -3)
+	:top 50%
+	:margin-left 20px
 
-.logo
-	:margin auto
-	:display block
+section
+	:display none
 
-.about
-	:background-color $amarelo
-
-.saiba-mais, .contato
-	:display block
-	:font-size 24px
-	:text-align right
-
-.saiba-mais
-	:padding 40px
-
-.contato
-	:padding 60px
-
-.menu
-	:position fixed
-	:bottom 0px
-	:width 100%
-	
 	a
-		:color $amarelo
+		:text-decoration underline
 
-	img
-		:padding 20px
+.pessoa
+	:z-index 4
+	text-align: center
+	width: 200px
+	height: 280px
+	position: relative
+
+	.front-face
+		position: absolute
+		height: 100%
+		width: 100%
+		-webkit-transform: rotateY(0deg)
+		-webkit-backface-visibility: hidden
+
+	.back-face
+		position: absolute
+		height: 100%
+		width: 100%
+		-webkit-transform: rotateY(180deg)
+		-webkit-backface-visibility: hidden
+
+	// &:hover
+	// 	.front-face
+	// 		-webkit-transform: rotateY(180deg)
+	// 		img
+	// 			:opacity 0.2
+
+	// 	.back-face
+	// 		-webkit-transform: rotateY(0deg)
+
+
+body[data-page]
+
+	h1
+		:left 0
+		:top 0
+		:font-size golden-ratio(100px, -3)
+		:margin 10px 20px
+		:cursor pointer
+		&:hover
+			:text-decoration underline
+
+	nav
+		:left 195px
+		:top 0
+		:margin 20px 0
+
+	.logo
+		:position absolute
+		:left golden-ratio(100%, -3)
+		:top $comeco_do_site
+		:margin-top -5px
+		:margin-left - golden-ratio(60px, 0)
+		:width 60px
+		:height 60px
+		:opacity 0.3
+
+body[data-page=sobre]
+	:background-color #fff
+
+	section.sobre
+		:display block
+
+	.wrapper
+		:height 60px
+		:z-index 1
+
+	.conteudo
+		:position absolute
+		:left golden-ratio(100%, -3)
+		:top $comeco_do_site
+		:margin-left 20px
+
+body[data-page=pessoas]
+
+	section.pessoas
+		:display block
+
+	.logo
+		:position fixed
+		:left 300px
+		:top -500px
+		:width 2000px
+		:height 2000px
+		:opacity 0.2
+		:margin-left - golden-ratio(100px, 0)
+
+		&:hover
+			:-webkit-transform none
+
+	h2
+		:text-align center
+
+	.conteudo
+		:position absolute
+		:left golden-ratio(100%, -3)
+		:top $comeco_do_site
+		:margin-top - golden-ratio(100px, -3)
+		:margin-left 20px
+
+body[data-page=trabalhos]
+	-webkit-backface-visibility: visible
+	:background-color #333
+
+	.wrapper
+		:height 60px
+
+	section.trabalhos
+		:display block
+
+	.logo
+		:opacity 0
+
+	.conteudo
+		:position static
+		:display block
+		:padding-top 100px
+
+body[data-page=contato]
+	
+	section.contato
+		:display block
+
+	.logo
+		:position fixed
+		:left golden-ratio(100%, -3)
+		:top $comeco_do_site
+		:margin-left - golden-ratio(100px, 0)
+		:opacity 0
+
+	.conteudo
+		:position absolute
+		:left golden-ratio(100%, -3)
+		:top $comeco_do_site
+		:margin-top - golden-ratio(100px, -3)
+		:margin-left 20px
+

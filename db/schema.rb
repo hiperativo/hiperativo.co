@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120908030929) do
+ActiveRecord::Schema.define(:version => 20130222215516) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(:version => 20120908030929) do
     t.datetime "updated_at"
     t.integer  "coluna_id"
     t.string   "slug"
+    t.boolean  "publico"
+    t.integer  "author_id"
+    t.string   "assunto_slug"
+  end
+
+  create_table "authors", :force => true do |t|
+    t.string   "name"
+    t.date     "birthday"
+    t.string   "twitter"
+    t.text     "bio"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "email"
   end
 
   create_table "colunas", :force => true do |t|
@@ -71,7 +84,70 @@ ActiveRecord::Schema.define(:version => 20120908030929) do
     t.datetime "updated_at"
     t.string   "nome"
     t.string   "name"
+    t.string   "slug"
+    t.integer  "numero_de_artigos", :default => 0
   end
+
+  create_table "contatos", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "subject"
+    t.string   "mensagem"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "telefone"
+  end
+
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month"
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "rich_rich_files", :force => true do |t|
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "rich_file_file_name"
+    t.string   "rich_file_content_type"
+    t.integer  "rich_file_file_size"
+    t.datetime "rich_file_updated_at"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.text     "uri_cache"
+    t.string   "simplified_type",        :default => "file"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "role"
+    t.text     "bio"
+    t.string   "twitter"
+    t.string   "name"
+    t.string   "facebook"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "videos", :force => true do |t|
     t.string   "titulo"
