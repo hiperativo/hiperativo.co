@@ -13,6 +13,7 @@ html
 	 				= link_to "Impulso Hiperativo", "/", class: "marcador"
 					| Design, web e programação
 	 			
+	 			
 	 			- if user_signed_in?
 	 				ul.nav.nav-pills.pull-right
 	 					li= link_to current_user.nome, edit_user_path(current_user)
