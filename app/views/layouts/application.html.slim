@@ -8,19 +8,17 @@ html
 
  	body
  		header
- 			.container
-	 			.row
-		 			.span6
-			 			h1 
-			 				= link_to "Impulso Hiperativo", "/", class: "marcador"
-		 				p.lead Design, web e programação
-		 			
-		 			- if user_signed_in?
-		 				ul.nav.nav-pills.pull-right
-		 					li= link_to current_user.nome, edit_user_path(current_user)
-							li= link_to "Transmitir um novo impulso!", new_impulso_path
-		 					li= link_to "sair", destroy_user_session_path, method: :delete
- 		section.conteudo
-	 		.container
-	 			= bootstrap_flash
-	 			= yield
+ 			.row
+	 			h1.span6
+	 				= link_to "Impulso Hiperativo", "/", class: "marcador"
+					| Design, web e programação
+	 			
+	 			- if user_signed_in?
+	 				ul.nav.nav-pills.pull-right
+	 					li= link_to current_user.nome, edit_user_path(current_user)
+						li= link_to "Transmitir um novo impulso!", new_impulso_path
+	 					li= link_to "sair", destroy_user_session_path, method: :delete
+
+ 		section.conteudo.container
+ 			= bootstrap_flash
+ 			= yield

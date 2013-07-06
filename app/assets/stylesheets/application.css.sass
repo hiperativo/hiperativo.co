@@ -1,5 +1,6 @@
 //= require bootstrap_and_overrides
 //= require _font-awesome
+
 @import "bourbon"
 
 @font-face
@@ -21,8 +22,10 @@
 	src: asset-url("miso-bold.otf")
 
 $amarelo: #ffde00
+$branco: #fff
 $preto: #333
 $cinza_claro: transparentize($preto, 0.98)
+$cinza: transparentize($preto, 0.90)
 
 $tipo_corpo: "Proxima Nova"
 $tipo_titulo: "Miso"
@@ -34,14 +37,26 @@ p
 	:margin-bottom 20px
 
 h1
-	:margin-top 0
+	:font-size 14px
+	:font-weight 300
+	:padding 10px
+	:margin 0
+	// :color $branco
+
+	a
+		:font-weight 700
+		:padding 10px
+		:background-color $amarelo
+		:margin-right 10px
 
 h2, h3, h4, h5
 	:padding 0
 	:margin 0
 
 hgroup
-	:margin 20px
+	:padding 10px 0
+	:margin 10px 0
+	:background-color $cinza_claro
 
 h2, h2 a
 	:font-family "Miso"
@@ -50,8 +65,15 @@ h2, h2 a
 	:line-height 1.0
 	:text-transform uppercase
 
+h4
+	:margin-top 0
+	:font-weight 300
+
 h3
-	:margin -10px 0
+	:margin -10px 3px
+	:background-color $preto
+	:color $branco
+	:padding 3px
 	:text-transform uppercase
 	:font-size 10px
 	:line-height 1
@@ -59,11 +81,14 @@ h3
 
 header
 	:border-bottom dotted 1px $preto
-	:padding 20px 0
+	// :background-color $preto
 
 section.conteudo
 	:border-top solid 40px $cinza_claro
 	:padding 20px 0
+
+.eye-guide
+	:background-color $amarelo
 
 a
 	color: $preto
@@ -73,6 +98,7 @@ a
 		text-decoration: none
 
 .nav.nav-pills
+	:margin-bottom 0
 	li
 		margin: 0 5px 5px 0
 		a
@@ -91,6 +117,5 @@ a
 			:background-color $preto
 			:color $amarelo
 
-.marcador
-	:background-color $amarelo
-	:padding 2px 5px 7px 10px
+.conteudo
+	:padding-top 40px

@@ -19,11 +19,14 @@ gem 'twitter-bootstrap-rails'
 gem 'font-awesome-sass-rails'
 
 gem 'turbolinks'
-gem 'rails_stdout_logging'
 
 gem 'jbuilder', '~> 1.2'
 gem "protected_attributes"
 gem "maruku"
+
+gem "ckeditor"
+gem "carrierwave"
+gem "mini_magick"
 
 group :doc do
 	gem 'sdoc', require: false

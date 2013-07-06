@@ -1,7 +1,7 @@
 = simple_form_for @impulso do |f|
 	= f.input :assunto
 	= f.input :titulo
-	= f.input :conteudo, input_html:{rows: 20, class: "span6"}
+	= f.input :conteudo, input_html:{rows: 20, class: "ckeditor"}
 
 	.form-actions
 		= f.button :submit, class: "btn btn-primary"

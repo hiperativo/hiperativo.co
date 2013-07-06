@@ -14,7 +14,7 @@ class ImpulsosController < ApplicationController
 	end
 
 	def create
-		@impulso = current_user.impulso.create params[:impulso]
+		@impulso = current_user.impulsos.create params[:impulso]
 		if @impulso.valid?
 			@impulso.save
 			redirect_to action: :show, id: @impulso.id
@@ -28,7 +28,9 @@ class ImpulsosController < ApplicationController
 	end
 
 	def update
-		
+		@impulso = Impulso.find params[:id]
+		@impulso.update_attributes! params[:impulso]
+		redirect_to @impulso
 	end
 
 	def destroy

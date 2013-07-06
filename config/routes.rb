@@ -1,9 +1,12 @@
 Hiperativo::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
 	devise_for :users
 	resources :users
 
+
 	constraints subdomain: "impulso" do
-		# resources :impulsos, path: "/"
+		get "/admin", to: redirect("/users/sign_in")
+		resources :impulsos, path: "/"
 		resources :impulsos
 	end
 
