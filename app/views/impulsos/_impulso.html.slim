@@ -1,18 +1,19 @@
 .eye-guide
-hgroup style="background-color: #fff"
-	.row
-		.span12
-			h3= impulso.assunto
-			h2= link_to impulso.titulo, impulso
-			h4 
-				| Transmitido por 
-				strong #{impulso.user.nome} | 
-				
-				= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
+	hgroup
+		.container
+			.row
+				.span12
+					h3= impulso.assunto
+					h2= link_to impulso.titulo, impulso
+					h4 
+						| Transmitido por 
+						strong #{impulso.user.nome} | 
+						
+						= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
 
-article.container
+.container
 	.row
-		.span8
+		article.span8
 			- if user_signed_in?
 				ul.nav.nav-pills
 					li= link_to "Editar", edit_impulso_path(impulso)

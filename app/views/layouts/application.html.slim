@@ -10,7 +10,8 @@ html
  		header
  			.row
 	 			h1.span6
-	 				= link_to "Impulso Hiperativo", "/", class: "marcador"
+	 				= image_tag "impulso-default.png", width: 40
+	 				= link_to "Impulso Hiperativo", "/"
 					| Design, web e programação
 	 			
 	 			
@@ -20,6 +21,6 @@ html
 						li= link_to "Transmitir um novo impulso!", new_impulso_path
 	 					li= link_to "sair", destroy_user_session_path, method: :delete
 
- 		section.conteudo.container
+ 		section.conteudo
  			= bootstrap_flash
  			= yield
