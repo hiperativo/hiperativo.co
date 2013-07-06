@@ -1,14 +1,26 @@
 doctype html
-html.animations
-	head
-		title hiperativo.co
-		link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'
-		= stylesheet_link_tag 		"application"
-		= javascript_include_tag 	"application"
+html
+ 	head
+ 		title Impulso Hiperativo
+ 		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+ 		= javascript_include_tag "application", "data-turbolinks-track" => true
+ 		= csrf_meta_tags
 
-	- unless params[:action] == "index"
-		.menu
-			= link_to image_tag("logo-hiperativo-small.png"), "/", :class => "logo-small"
-
-	body
-		= yield
+ 	body
+ 		header
+ 			.container
+	 			.row
+		 			.span6
+			 			h1 
+			 				= link_to "Impulso Hiperativo", "/", class: "marcador"
+		 				p.lead Design, web e programação
+		 			
+		 			- if user_signed_in?
+		 				ul.nav.nav-pills.pull-right
+		 					li= link_to current_user.nome, edit_user_path(current_user)
+							li= link_to "Transmitir um novo impulso!", new_impulso_path
+		 					li= link_to "sair", destroy_user_session_path, method: :delete
+ 		section.conteudo
+	 		.container
+	 			= bootstrap_flash
+	 			= yield

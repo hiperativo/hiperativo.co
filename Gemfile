@@ -1,24 +1,34 @@
-
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '4.0.0'
 gem 'pg'
 gem 'thin'
-gem 'maruku'
-gem 'jquery_mobile_rails'
-gem 'mobylette'
+gem 'foreman'
 
-gem 'font-awesome-sass-rails'
+gem 'uglifier', '>= 1.3.0'
+gem 'sass-rails', '~> 4.0.0'
 gem 'bourbon'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-rails'
 gem 'slim-rails'
-gem 'sass-rails',   '~> 3.2.3'
-gem 'coffee-rails', '~> 3.2.1'
-gem 'uglifier', '>= 1.0.3'
 
-group :development do
-  gem 'ruby_gntp'
-	gem 'rb-fsevent', :require => false
-	gem 'guard-rspec'
+gem 'simple_form'
+gem 'devise'
+
+gem 'twitter-bootstrap-rails'
+gem 'font-awesome-sass-rails'
+
+gem 'turbolinks'
+gem 'rails_stdout_logging'
+
+gem 'jbuilder', '~> 1.2'
+gem "protected_attributes"
+gem "maruku"
+
+group :doc do
+	gem 'sdoc', require: false
 end
 
-gem 'jquery-rails'
+group :production do 
+	gem 'rails_12factor'
+end

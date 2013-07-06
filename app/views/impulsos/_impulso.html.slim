@@ -1,0 +1,21 @@
+.row
+	hgroup.span12
+		h3= impulso.assunto
+		h2= link_to impulso.titulo, impulso
+		h4 
+			| Transmitido por 
+			/= impulso.user+" ,"
+			= impulso.created_at.strftime "%A"
+			
+			| no dia
+			= impulso.created_at.strftime "%d"
+
+
+.row
+	.span8
+		- if user_signed_in?
+			ul.nav.nav-pills
+				li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
+				li= link_to "Editar", edit_impulso_path(impulso)
+
+		= markdown impulso.conteudo

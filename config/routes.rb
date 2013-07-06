@@ -1,6 +1,11 @@
 Hiperativo::Application.routes.draw do
-	get "maintenance" => "errors#maintenance"
-	get "blog" => "posts#index"
-	root :to => "pages#index"
+	devise_for :users
+	resources :users
 
+	constraints subdomain: "impulso" do
+		# resources :impulsos, path: "/"
+		resources :impulsos
+	end
+
+	root to: redirect(subdomain: "impulso"), constraints: {subdomain: ""}
 end
