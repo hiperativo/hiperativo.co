@@ -30,8 +30,55 @@ $cinza: transparentize($preto, 0.90)
 $tipo_corpo: "Proxima Nova"
 $tipo_titulo: "Miso"
 
+
+// Large display		1200px and up	70px	30px
+// Default				980px and up	60px	20px
+// Portrait tablets		768px and above	42px	20px
+// Phones to tablets	767px and below	Fluid columns, no fixed widths
+// Phones				480px and below	Fluid columns, no fixed widths
+
+
+=desktop
+	@media (min-width: 1200px)
+		@content
+ 
+=tablet
+	@media (min-width: 768px) and (max-width: 979px)
+		@content
+ 
+=mobile-de-lado
+	@media (max-width: 767px)
+		@content
+ 
+=mobile
+	@media (max-width: 480px)
+		@content
+
 body
 	:font 18px/1.4 $tipo_corpo
+	:font-weight 300
+
+	+desktop
+		:font-size 22px
+		:font-weight 300
+
+	+mobile-de-lado
+		:padding 0
+	
+	+mobile
+		:font-size 12px
+		:font 14px/1.4 Georgia
+		:font-weight 500
+
+
+	> header
+		// :border-bottom dotted 1px $preto
+		:background-color $cinza_claro
+		:margin-bottom 40px
+		:font-family "Proxima Nova"
+
+	> section
+		:margin 20px
 
 p
 	:margin-bottom 20px
@@ -53,14 +100,28 @@ h2, h3, h4, h5
 	:padding 0
 	:margin 0
 
-hgroup
-	:padding 10px 0
-	:margin 10px 0
-	// :background-color $cinza_claro
-	:background-image url(impulso-default.png)
-	:background-repeat no-repeat
-	:background-position 20px 25px
-	:padding-left 80px
+article
+	.conteudo
+		// :text-align justify
+		:width 700px
+		:margin-left 160px
+
+		+desktop
+			:margin-left 200px
+			:width 800px
+			:text-align justify
+
+		+tablet
+			:margin-left 125px
+			:width 630px
+
+		+mobile-de-lado
+			:width auto
+			:margin-right 0
+			:margin-left 0
+
+
+	header
 
 h2, h2 a
 	:font-family "Miso"
@@ -69,9 +130,18 @@ h2, h2 a
 	:line-height 1.0
 	:text-transform uppercase
 
+	+mobile-de-lado
+		:font-size 50px
+
+	+mobile
+		:font-size 40px
+
 h4
 	:margin-top 0
 	:font-weight 300
+
+	+mobile
+		:font-size 10px
 
 h3
 	:margin -10px 3px
@@ -83,13 +153,11 @@ h3
 	:line-height 1
 	:display inline
 
-header
-	// :border-bottom dotted 1px $preto
-	:background-color $cinza_claro
-
-section.conteudo
-	// :border-top solid 40px $cinza_claro
-	:padding 20px 0
+hr
+	:margin 20px 0
+	:height 40px
+	:border none
+	:background-image image-url("pattern-1.png")
 
 .eye-guide
 	// :background-color $amarelo
@@ -120,9 +188,3 @@ a
 			:border-radius 0
 			:background-color $preto
 			:color $amarelo
-
-.conteudo
-	:padding-top 40px
-
-	article
-		:padding-left 40px

@@ -4,16 +4,16 @@ html
  		title Impulso Hiperativo
  		= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
  		= javascript_include_tag "application", "data-turbolinks-track" => true
+ 		meta name="viewport" content="width=device-width, initial-scale=1.0"
  		= csrf_meta_tags
 
  	body
  		header
  			.row
-	 			h1.span6
-	 				= image_tag "impulso-default.png", width: 40
+	 			h1.span8
+	 				= image_tag "impulso-hiperativo-logo.png", width: 40
 	 				= link_to "Impulso Hiperativo", "/"
-					| Design, web e programação
-	 			
+					span.hidden-phone Design, web e programação
 	 			
 	 			- if user_signed_in?
 	 				ul.nav.nav-pills.pull-right
@@ -21,6 +21,6 @@ html
 						li= link_to "Transmitir um novo impulso!", new_impulso_path
 	 					li= link_to "sair", destroy_user_session_path, method: :delete
 
- 		section.conteudo
+ 		section
  			= bootstrap_flash
  			= yield

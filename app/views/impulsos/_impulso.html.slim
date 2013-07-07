@@ -1,22 +1,22 @@
-.eye-guide
-	hgroup
-		.container
-			.row
-				.span12
-					h3= impulso.assunto
-					h2= link_to impulso.titulo, impulso
-					h4 
-						| Transmitido por 
-						strong #{impulso.user.nome} | 
-						
-						= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
+article
+	header
+		.row
+			.span2.impulso.hidden-phone
+				= image_tag "impulso-default.png", width: 100, style:"width: 100px; margin-top: 16px", class: "pull-right"
+			.span10
+				h3= impulso.assunto
+				h2= link_to impulso.titulo, impulso
+				h4 
+					| Transmitido por 
+					strong #{impulso.user.nome} | 
+					
+					= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
 
-.container
-	.row
-		article.span8
-			- if user_signed_in?
-				ul.nav.nav-pills
-					li= link_to "Editar", edit_impulso_path(impulso)
-					li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
+	.conteudo
+		hr
+		- if user_signed_in?
+			ul.nav.nav-pills
+				li= link_to "Editar", edit_impulso_path(impulso)
+				li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
 
-			.conteudo= impulso.conteudo.html_safe
+		= impulso.conteudo.html_safe
