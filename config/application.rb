@@ -24,5 +24,6 @@ module Hiperativo
     config.assets.precompile << '*.js'
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w(ckeditor/init.js)
+    config.assets.precompile << "assets/ckeditor"
   end
 end
