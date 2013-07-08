@@ -1,4 +1,3 @@
-- 5.times
-	- if @impulsos.any?
-		- for impulso in @impulsos do
-			= render impulso || "Não há impulsos a serem transmitidos! "
+- if @impulsos.any?
+	- for impulso in @impulsos do
+		= render impulso || "Não há impulsos a serem transmitidos! "
