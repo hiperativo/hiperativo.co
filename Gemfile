@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 1.2'
 gem "protected_attributes"
 gem "maruku"
 
-gem "ckeditor"
+gem "ckeditor", github: "galetahub/ckeditor"
 gem "carrierwave"
 gem "mini_magick"
 

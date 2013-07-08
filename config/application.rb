@@ -23,7 +23,8 @@ module Hiperativo
     config.i18n.default_locale = "pt-BR"
     config.assets.precompile << '*.js'
     config.assets.precompile += Ckeditor.assets
-    config.assets.precompile += %w(ckeditor/init.js)
-    config.assets.precompile << "assets/ckeditor"
+    config.assets.precompile << "ckeditor/init.js"
+    config.assets.precompile << "ckeditor"
+    config.assets.precompile << "ckeditor/*"
   end
 end
