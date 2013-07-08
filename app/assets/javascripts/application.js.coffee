@@ -1,4 +1,4 @@
 #= require jquery
 #= require jquery_ujs
-#= require ckeditor
+#= require ckeditor/init
 #= require twitter/bootstrap
