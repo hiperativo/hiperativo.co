@@ -1,12 +1,14 @@
 class ImpulsosController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
+	before_action :add_breadcrumbs, except: :index
 
 	def index
-		@impulsos = Impulso.all
+		@impulsos = Impulso.order("created_at DESC")
 	end
 
 	def show
-		@impulso = Impulso.find params[:id]
+		@impulso = Impulso.friendly.find params[:id]
+		add_breadcrumb @impulso.titulo, @impulso
 	end
 
 	def new
@@ -24,17 +26,23 @@ class ImpulsosController < ApplicationController
 	end
 
 	def edit
-		@impulso = Impulso.find params[:id]
+		@impulso = Impulso.friendly.find params[:id]
 	end
 
 	def update
-		@impulso = Impulso.find params[:id]
+		@impulso = Impulso.friendly.find params[:id]
 		@impulso.update_attributes! params[:impulso]
 		redirect_to @impulso
 	end
 
 	def destroy
-		Impulso.find(params[:id]).destroy
+		Impulso.friendly.find(params[:id]).destroy
 		redirect_to impulsos_path
+	end
+	
+	protected
+
+	def add_breadcrumbs
+		add_breadcrumb "todos os impulsos", root_path
 	end
 end

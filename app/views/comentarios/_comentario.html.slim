@@ -1,0 +1,14 @@
+- unless comentario.user.nil?
+	.row
+		.media.span5
+			= link_to "http://twitter.com/#{comentario.user.nickname}", target: "BLANK", class: "pull-left" do
+				= image_tag comentario.user.image_url, class: "media-object"
+			.media-body
+				h5.media-heading
+					= link_to "@"+comentario.user.nickname, "http://twitter.com/#{comentario.user.nickname}", target: "BLANK"
+					- if user_signed_in?
+						- if current_user == comentario.user or current_user.power >= 2
+							|  \ 
+							= link_to glyph(:trash), [comentario.impulso, comentario], method: :delete, confirm: "Tem certeza?", class: "remover-comentario"
+
+				= markdown comentario.conteudo

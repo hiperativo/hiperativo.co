@@ -16,11 +16,12 @@ html
 					span.hidden-phone Design, web e programação
 	 			
 	 			- if user_signed_in?
-	 				ul.nav.nav-pills.pull-right
-	 					li= link_to current_user.nome, edit_user_path(current_user)
-						li= link_to "Transmitir um novo impulso!", new_impulso_path
-	 					li= link_to "sair", destroy_user_session_path, method: :delete
-
+	 				- if current_user.power > 0
+		 				ul.nav.nav-pills.pull-right
+		 					li= link_to current_user.name, edit_user_path(current_user)
+							li= link_to "Transmitir um novo impulso!", new_impulso_path
+		 					li= link_to "sair", destroy_user_session_path, method: :delete
+ 		nav= render_breadcrumbs
  		section
- 			= bootstrap_flash
+ 			/ = bootstrap_flash
  			= yield

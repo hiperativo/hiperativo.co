@@ -2,7 +2,9 @@ module ApplicationHelper
 	require 'digest/md5'
 
 	def markdown(string)
-		Maruku.new(string).to_html.html_safe
+		options = {lax_spacing: true, hard_wrap: true}
+		renderer = Redcarpet::Render::HTML.new(options)
+		Redcarpet::Markdown.new(renderer).render(string).html_safe
 	end
 
 	def avatar(user, size=nil, options={})

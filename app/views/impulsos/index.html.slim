@@ -1,3 +1,7 @@
-- if @impulsos.any?
-	- for impulso in @impulsos do
-		= render impulso || "Não há impulsos a serem transmitidos! "
+- if @impulsos.nil?
+	markdown: 
+		Não há impulsos a serem transmitidos!
+- else
+	- for impulso in @impulsos
+		- unless impulso.user.nil? and (current_user.power < 3 if user_signed_in?)
+			= render partial: "impulso", object: impulso

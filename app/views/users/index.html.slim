@@ -1,3 +1,17 @@
 h2 Equipe
-- for user in @users do
-	= user.nome
+table.table.table-striped.span10
+	thead
+		th Nome
+		th Poder
+		th
+
+	tbody	
+		- for user in @users do
+			tr
+				td= user.nickname
+				td= user.role.humanize
+				td
+					- if current_user.power >= 3
+						= link_to glyph(:edit), edit_user_path(user)
+						|  
+						= link_to glyph(:trash), user, method: :delete, confirm: "Tem certeza"

@@ -1,4 +1,4 @@
-article
+article class=params[:action]
 	header
 		.row
 			.span2.impulso.hidden-phone
@@ -7,16 +7,47 @@ article
 				h3= impulso.assunto
 				h2= link_to impulso.titulo, impulso
 				h4 
-					| Transmitido por 
-					strong #{impulso.user.nome} | 
-					
-					= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
+					- if impulso.user.nil?
+						markdown:
+							**esse artigo está orfão!**
+					- else
+						| Transmitido por 
+						strong #{impulso.user.name} | 
+						
+						= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
 
 	.conteudo
 		hr
 		- if user_signed_in?
-			ul.nav.nav-pills
-				li= link_to "Editar", edit_impulso_path(impulso)
-				li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
+			- if current_user.power >= 1
+				- if current_user == impulso.user or current_user.power >= 2
+					ul.nav.nav-pills
+						li= link_to "Editar", edit_impulso_path(impulso)
+						li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
 
 		= impulso.conteudo.html_safe
+
+	footer
+		h3 Comentários
+		.comentarios
+			= render impulso.comentarios
+		- if !user_signed_in?
+			p= link_to "Fazer login no twitter para comentar.", user_omniauth_authorize_path(:twitter)
+		- else
+			.row
+				.media.span5
+					= link_to "http://twitter.com/#{current_user.nickname}", target: "BLANK", class: "pull-left" do
+						= image_tag current_user.image_url, class: "media-object"
+					.media-body
+						h5.media-heading
+							= link_to "@"+current_user.nickname, "http://twitter.com/#{current_user.nickname}", target: "BLANK"
+							small
+								|  / 
+								= link_to "desconectar do twitter", destroy_user_session_path, method: :delete
+								|  / 
+								= link_to "logar com outra conta", user_omniauth_authorize_path(:twitter)
+
+						= simple_form_for [impulso, Comentario.new] do |f|
+							= f.input :conteudo, label: false, input_html:{class: "span4", rows: 10}
+							= f.submit "Enviar", class: "btn btn-primary"
+							= f.input_field :user_id, value: current_user.id, as: :hidden
