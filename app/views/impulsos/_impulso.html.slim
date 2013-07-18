@@ -44,9 +44,9 @@ article class=params[:action]
 							= link_to "@"+current_user.nickname, "http://twitter.com/#{current_user.nickname}", target: "BLANK"
 							small
 								|  / 
-								= link_to "desconectar do twitter", destroy_user_session_path, method: :delete
+								= link_to "desconectar twitter", destroy_user_session_path, method: :delete
 								|  / 
-								= link_to "logar com outra conta", user_omniauth_authorize_path(:twitter)
+								= link_to "mudar conta", user_omniauth_authorize_path(:twitter)
 
 						= simple_form_for [impulso, Comentario.new] do |f|
 							= f.input :conteudo, label: false, input_html:{class: "span4", rows: 10}
