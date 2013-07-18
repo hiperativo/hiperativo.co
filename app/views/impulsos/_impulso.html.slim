@@ -12,7 +12,8 @@ article class=params[:action]
 							**esse artigo está orfão!**
 					- else
 						| Transmitido por 
-						strong #{impulso.user.name} | 
+						strong= link_to("@"+impulso.user.nickname, "http://twitter.com/#{impulso.user.nickname}")
+						|  /  
 						
 						= l(impulso.created_at, format: "%A, dia %e de %B de %Y")
 

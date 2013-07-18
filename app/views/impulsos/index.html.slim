@@ -3,5 +3,8 @@
 		Não há impulsos a serem transmitidos!
 - else
 	- for impulso in @impulsos
-		- unless impulso.user.nil? and (current_user.power < 3 if user_signed_in?)
+		- if !impulso.user.nil?
 			= render partial: "impulso", object: impulso
+		- elsif user_signed_in?
+			- if current_user.power >= 3
+				= render partial: "impulso", object: impulso

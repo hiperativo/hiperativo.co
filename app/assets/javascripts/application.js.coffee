@@ -4,8 +4,6 @@
 #= require twitter/bootstrap
 
 $ ->
-
-	
 	refresh_comments = (new_content) ->
 		$(".comentarios").html new_content
 		do comment_interaction
