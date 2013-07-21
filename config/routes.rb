@@ -1,7 +1,8 @@
 Hiperativo::Application.routes.draw do
-  get "comentarios/create"
-  get "comentarios/destroy"
-  mount Ckeditor::Engine => '/ckeditor'
+	get "comentarios/create"
+	get "comentarios/destroy"
+
+	mount Ckeditor::Engine => '/ckeditor'
 	devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 	resources :users
 
@@ -10,6 +11,10 @@ Hiperativo::Application.routes.draw do
 		resources :impulsos, path: "/" do
 			resources :comentarios
 		end
+	end
+
+	constraints subdomain: "neurotransmissao" do
+		resources :neurotransmissions, path: "/", defaults: { format: "xml" }
 	end
 
 	root to: redirect(subdomain: "impulso"), constraints: {subdomain: ""}

@@ -30,6 +30,7 @@ gem "fog"
 gem "redcarpet"
 gem "protected_attributes"
 gem "friendly_id", github: "FriendlyId/friendly_id"
+gem "sanitize"
 
 # xtras
 gem 'turbolinks'

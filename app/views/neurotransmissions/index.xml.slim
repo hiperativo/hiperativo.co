@@ -1,0 +1,30 @@
+doctype XML
+rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+	channel
+		title Neurotransmissão
+		link http://impulso.hiperativo.co
+		language pt-br
+		copyright= CGI.escapeHTML "Pedro Maciel & Beatriz Accioly"
+		itunes:subtitle Transmissão de conteúdo de impulso hiperativo
+		itunes:author Pedro Maciel
+		itunes:summary 
+			| No neurotransmissão, conversamos sobre temas variando entre web, design e tecnologia de forma impulsiva e hiperativa.
+		itunes:owner
+			itunes:name Pedro Maciel
+			itunes:email pedro.maciel@hiperativo.co
+
+		itunes:image href="http://hiperativo.co/neurotransmissao.jpg"
+		itunes:category text="Society &amp; Culture"
+			itunes:category text="Gadgets"
+
+		- for impulso in @impulsos
+			item
+				title= impulso.titulo
+				itunes:author Pedro Maciel
+				itunes:subtitle= Sanitize.clean(impulso.conteudo)
+				itunes:sumary= Sanitize.clean(impulso.conteudo)
+				itunes:image href="http://hiperativo.co/neurotransmissao.jpg"
+				enclosure type="audio/mpeg" url=impulso.audio.url
+				/ guid http://example.com/podcasts/archive/aae20050615.m4a
+				pubDate= impulso.created_at
+				/ itunes:duration 7:04

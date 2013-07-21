@@ -84,6 +84,26 @@ h1
 		// :background-color $amarelo
 		:margin-right 10px
 
+.btn
+	:color $preto
+	:text-decoration none
+	:font-family $tipo_titulo
+	:font-size 20px
+	:text-transform uppercase
+	:font-weight 900
+	:padding 10px
+	:line-height 1
+	:text-shadow 1px 1px $cinza
+	
+	&.btn-primary
+		:background none
+		:background-color $amarelo
+
+		&:hover
+			:background-color $preto
+			:color $amarelo
+
+
 h2, h3, h4, h5
 	:padding 0
 	:margin 0
@@ -111,8 +131,6 @@ article
 		:text-shadow none
 		:font-family $tipo_corpo
 
-
-
 	&.show header, .conteudo, footer
 		// :text-align justify
 		:margin-left 160px
@@ -133,12 +151,14 @@ article
 			:margin-left 0
 
 	p, li
-		a
+		> a
 			:text-decoration underline
 			&:hover
 				:background-color $amarelo
 				:text-decoration underline
 				:opacity 1
+
+
 
 	ul, ol
 		:margin 0

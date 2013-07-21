@@ -27,6 +27,14 @@ article class=params[:action]
 						li= link_to "Apagar", impulso, method: :delete, confirm: "Tem certeza?"
 
 		= impulso.conteudo.html_safe
+		audio controls=""
+			source src=impulso.audio_url type="audio/mpeg"
+		
+		|  
+		p= link_to impulso.audio_url, class: "btn btn-large btn-primary", download: "#{impulso.slug}.mp3" do
+			= glyph(:cloud_download)
+			|  Download
+
 
 	footer
 		h3 Comentários
