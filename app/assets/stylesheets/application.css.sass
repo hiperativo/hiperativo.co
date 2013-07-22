@@ -85,7 +85,7 @@ h1
 		:margin-right 10px
 
 .btn
-	:color $preto
+	:color $amarelo
 	:text-decoration none
 	:font-family $tipo_titulo
 	:font-size 20px
@@ -94,8 +94,16 @@ h1
 	:padding 10px
 	:line-height 1
 	:text-shadow 1px 1px $cinza
-	
+
+	:background none
+	:background-color $preto
+
+	&:hover
+		:background-color $amarelo
+		:color $preto
+
 	&.btn-primary
+		:color $preto
 		:background none
 		:background-color $amarelo
 

@@ -32,9 +32,14 @@ article class=params[:action]
 				source src=impulso.audio_url type="audio/mpeg"
 		
 			|  
-			p= link_to impulso.audio_url, class: "btn btn-large btn-primary", download: "#{impulso.slug}.mp3" do
-				= glyph(:cloud_download)
-				|  Download
+			p
+				= link_to impulso.audio_url, class: "btn btn-large btn-primary", download: "#{impulso.slug}.mp3" do
+					= glyph(:cloud_download)
+					|  Faça o Download
+				|  ou  
+				= link_to "https://itunes.apple.com/br/podcast/neurotransmissao/id677385223?l=en", class: "btn", target: :blank do
+					= glyph(:rss)
+					|   Assine o Neurotransmissão no iTunes
 
 
 	footer
