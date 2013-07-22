@@ -17,8 +17,8 @@ rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
 			itunes:name Pedro Maciel
 			itunes:email pedro.maciel@hiperativo.co
 
-		itunes:image href="http://commondatastorage.googleapis.com/hiperativo%2Fuploads%2Fneurotransmissao.jpg"
-		itunes:category text="Society &amp; Culture"
+		itunes:image href="http://commondatastorage.googleapis.com/hiperativo%2Fuploads%2Fneurotransmissao.jpg" /
+		itunes:category text="Society &amp; Culture" /
 
 		- for impulso in @impulsos
 			item
@@ -26,8 +26,8 @@ rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
 				itunes:author Pedro Maciel
 				itunes:subtitle= truncate Sanitize.clean(impulso.conteudo), length: 255, separator: " "
 				itunes:summary= Sanitize.clean(impulso.conteudo)
-				itunes:image href="http://jovemnerd.ig.com.br/wp-content/themes/jovemnerd_v2b/images/MRG_FEED.jpg"
-				enclosure type="audio/mpeg" url=impulso.audio.url length=0
+				itunes:image href="http://jovemnerd.ig.com.br/wp-content/themes/jovemnerd_v2b/images/MRG_FEED.jpg" /
+				enclosure type="audio/mpeg" url=impulso.audio.url length=0 /
 				guid= impulso.audio.url
 				pubDate= impulso.created_at.rfc2822
 				/ itunes:duration 7:04
