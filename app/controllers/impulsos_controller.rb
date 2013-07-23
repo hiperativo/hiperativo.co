@@ -9,6 +9,16 @@ class ImpulsosController < ApplicationController
 	def show
 		@impulso = Impulso.friendly.find params[:id]
 		add_breadcrumb @impulso.titulo, @impulso
+		@open_graph_meta_data = { 
+				title:			@impulso.titulo,
+				type:			"article",
+				image:			"http://commondatastorage.googleapis.com/hiperativo%2Fuploads%2Fneurotransmissao.jpg",
+				url:			request.protocol+request.host_with_port+request.fullpath,
+				description: 	Sanitize.clean(@impulso.conteudo),
+				audio: @impulso.audio.url,
+				site_name: "hiperativo.co",
+				locale: "pt_BR"
+			}
 	end
 
 	def new
