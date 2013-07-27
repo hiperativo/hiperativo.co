@@ -1,6 +1,7 @@
 - if @impulsos.nil?
 	markdown: 
 		Não há impulsos a serem transmitidos!
+
 - else
 	- for impulso in @impulsos
 		- if !impulso.user.nil?

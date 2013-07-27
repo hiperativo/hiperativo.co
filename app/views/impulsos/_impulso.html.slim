@@ -3,13 +3,14 @@ article class=params[:action]
 		.row
 			.span2.impulso.hidden-phone
 				= image_tag "impulso-default.png", width: 100, style:"width: 100px; margin-top: 16px", class: "pull-right"
+			
 			.span10
 				h3= impulso.assunto
 				h2= link_to impulso.titulo, impulso
 				h4 
 					- if impulso.user.nil?
 						markdown:
-							**esse artigo está orfão!**
+							__esse artigo está orfão!__
 					- else
 						| Transmitido por 
 						strong= link_to("@"+impulso.user.nickname, "http://twitter.com/#{impulso.user.nickname}")

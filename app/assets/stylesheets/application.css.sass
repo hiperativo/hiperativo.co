@@ -66,7 +66,12 @@ body
 		:border-top 2px solid $amarelo
 
 	> section
-		:margin 20px
+		:margin 0 20px
+		:padding 20px 0
+		// :background transparent image-url("vert-border.png") repeat-y 10px 0
+
+	> footer
+
 
 p
 	:margin-bottom 20px
@@ -127,17 +132,18 @@ h2, h3
 article
 	:padding-bottom 40px
 	
-	header h3
-		:margin -10px 3px
-		:background-color $preto
-		:color $branco
-		:padding 3px
-		:text-transform uppercase
-		:font-size 10px
-		:line-height 1
-		:display inline
-		:text-shadow none
-		:font-family $tipo_corpo
+	header 
+		h3
+			:margin -10px 3px
+			:background-color $preto
+			:color $branco
+			:padding 3px
+			:text-transform uppercase
+			:font-size 10px
+			:line-height 1
+			:display inline
+			:text-shadow none
+			:font-family $tipo_corpo
 
 	&.show header, .conteudo, footer
 		// :text-align justify
