@@ -70,5 +70,6 @@ article class=params[:action]
 		h5 Todos os impulsos já transmitidos
 		ul
 			- for impulso in Impulso.order("created_at DESC") do
-				li
-					= link_to "#{impulso.titulo}", impulso
+				- unless impulso.user.nil?
+					li
+						= link_to "#{impulso.titulo}", impulso
