@@ -3,7 +3,7 @@ class ImpulsosController < ApplicationController
 	before_action :add_breadcrumbs, except: :index
 
 	def index
-		@impulsos = Impulso.order("created_at DESC")
+		redirect_to Impulso.order("created_at DESC").first
 	end
 
 	def show

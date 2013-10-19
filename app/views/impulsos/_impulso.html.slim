@@ -42,7 +42,6 @@ article class=params[:action]
 					= glyph(:rss)
 					|   Assine o Neurotransmissão no iTunes
 
-
 	footer
 		h3 Comentários
 		.comentarios
@@ -67,7 +66,9 @@ article class=params[:action]
 							= f.input :conteudo, label: false, input_html:{class: "span4", rows: 10}
 							= f.submit "Enviar", class: "btn btn-primary"
 							= f.input_field :user_id, value: current_user.id, as: :hidden
-		h5 Todos os artigos do blog
+		hr
+		h5 Todos os impulsos já transmitidos
 		ul
-			- for impulso in Impulso.all do
-				li= link_to impulso.titulo, impulso
+			- for impulso in Impulso.order("created_at DESC") do
+				li
+					= link_to "#{impulso.titulo}", impulso
