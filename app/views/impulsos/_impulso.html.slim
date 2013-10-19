@@ -67,3 +67,7 @@ article class=params[:action]
 							= f.input :conteudo, label: false, input_html:{class: "span4", rows: 10}
 							= f.submit "Enviar", class: "btn btn-primary"
 							= f.input_field :user_id, value: current_user.id, as: :hidden
+		h5 Todos os artigos do blog
+		ul
+			- for impulso in Impulso.all do
+				li= link_to impulso.titulo, impulso
