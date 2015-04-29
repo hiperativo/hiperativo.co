@@ -1,7 +1,0 @@
-- @titulo = @impulso.titulo
-- content_for :open_graph_meta_data
-	- for key, value in @open_graph_meta_data do
-		- unless value.nil?
-			meta property="og:#{key}" content=value
-
-= render @impulso
