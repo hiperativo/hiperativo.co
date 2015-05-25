@@ -1,0 +1,11 @@
+section.products
+    - for product in @products
+        article id="product-#{product.id}"
+
+- if logged_in
+    .span4
+        h3 Adicionar um novo produto
+        = form_for :product do |f|
+            input placeholder="Nome do produto"
+            textarea placeholder="Descrição" rows=6
+            = f.button "pronto"

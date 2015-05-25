@@ -1,0 +1,42 @@
+@import "grid"
+
+$preto: #000
+$branco: #fff
+$cinza: #666
+
+*
+    box-sizing: border-box
+
+body
+    padding: 40px
+
+body, input, textarea
+    font-size: 14px
+    font-family: "Nitti WM2"
+
+input, textarea, button
+    display: block
+    width: 100%
+    padding: 10px
+    margin-bottom: 10px
+
+button
+    background-color: $preto
+    color: $branco
+    border: none
+    cursor: pointer
+
+    &:hover
+        background-color: $cinza
+
+.products
+    margin-left: -20px
+    margin-top: -20px
+
+    article
+        width: 200px
+        height: 300px
+        border: 1px solid $preto
+        display: block
+        float: left
+        margin: 20px

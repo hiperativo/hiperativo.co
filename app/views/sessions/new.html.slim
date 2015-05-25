@@ -1,0 +1,8 @@
+main
+    .row: .span4
+        h1 Logar
+        = params[:alert]
+        = form_for :session do |f|
+            input[placeholder="senha" type="password" name="password"]
+            = f.button type: "submit"
+
