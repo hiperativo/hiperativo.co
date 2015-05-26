@@ -1,6 +1,11 @@
 class ProductsController < ApplicationController
     def index
         @products = Product.all
+        if request.xhr?
+            render @products
+        else
+            render
+        end
     end
 
     def show
@@ -15,5 +20,9 @@ class ProductsController < ApplicationController
     end
 
     def update
+        p = Product.find params["id"]
+        p.update_attribute params["field"], params["value"]
+        p.save
+        render nothing: true, status: 200
     end
 end

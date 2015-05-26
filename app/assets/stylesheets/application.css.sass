@@ -36,7 +36,17 @@ button
     article
         width: 200px
         height: 300px
-        border: 1px solid $preto
         display: block
         float: left
         margin: 20px
+
+        img
+            border: 1px solid $preto
+            width: 100%
+
+[data-editable], [data-droppable]
+    display: block
+
+[data-droppable]
+    &.dropping
+        opacity: 0.3
