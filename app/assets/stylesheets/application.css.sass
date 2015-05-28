@@ -1,5 +1,13 @@
 @import "grid"
 
+
+@font-face
+    font-family: "Nitti"
+    font-weight: 300
+    src: asset-url("Nitti-light.otf")
+
+$font-copy: "Nitti"
+
 $preto: #000
 $branco: #fff
 $cinza: #666
@@ -12,7 +20,8 @@ body
 
 body, input, textarea
     font-size: 14px
-    font-family: "Nitti WM2"
+    font-weight: 300
+    font-family: $font-copy
 
 input, textarea, button
     display: block
