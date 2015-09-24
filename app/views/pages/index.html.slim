@@ -3,7 +3,7 @@
 .wrapper
 
 nav.from
-	- for link, item in {sobre: "conheça-nos", external: "blog", pessoas: "pessoas", contato: "contato"} do
+	- for link, item in {contato: "contato"} do
 		= " / "
 		= if link == :external then link_to(item, "/#{item}") else link_to(item, "#", data:{"link"=>link}) end
 
