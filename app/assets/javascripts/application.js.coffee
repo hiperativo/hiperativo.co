@@ -16,7 +16,7 @@ $ ->
 			# opacity: (1-depth)*0.4
 			width: "#{20+100*depth}px"
 			top: "#{Math.random()*100}%"
-			"animation": "bg #{30+(depth*40)}s linear 0 infinite"
+			"animation": "bg #{30+(depth*40)}s linear infinite"
 		console.log depth
 
 	seeds = [1..7]
